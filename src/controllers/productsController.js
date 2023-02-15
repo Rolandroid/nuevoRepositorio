@@ -8,8 +8,11 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
 	// Root - Show all products
+	
 	index: (req, res) => {
 		// Do the magic{
+			
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		return res.render("products",{products,toThousand})
 	},
 
@@ -92,7 +95,14 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 		// Do the magic
+
+		const {id} = req.params;
+		const productsModified = products.filter(product => product.id !== +id)
+		fs.writeFileSync(productsFilePath, JSON.stringify(productsModified, null, 3),'utf-8');	
+		return res.redirect('/products')
+	},
+		
 	}
-};
+;
 
 module.exports = controller;
