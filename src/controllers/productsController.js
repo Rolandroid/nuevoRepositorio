@@ -68,7 +68,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		const {name,discount, price , description, category} = req.body;
 
 		const productModified = {
-			id,
+			id : +id,
 			name : name.trim(),
 			description : description.trim(),
 			price : +price,
