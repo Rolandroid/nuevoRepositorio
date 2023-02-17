@@ -43,7 +43,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 			description : description.trim(),
 			price : +price,
 			discount : +discount,
-			image : null,
+			image : req.file ? req.file.filename : null,
 			category 
 		}
 
