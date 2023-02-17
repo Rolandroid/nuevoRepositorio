@@ -15,7 +15,8 @@
 			</div>
 		
 			<% products.forEach(({id,image,price,discount,name}) => { %>
-				<%- include('partials/product',{id,image,price,discount,name}) %>
+				<%- include('./partials/product',{id,image,price,discount,name})%>
+				
 				 <% }) %>
 		
 		</div>

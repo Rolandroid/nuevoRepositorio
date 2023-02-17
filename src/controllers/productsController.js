@@ -13,7 +13,7 @@ const controller = {
 		// Do the magic{
 			
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-		return res.render("products",{products,toThousand})
+		return res.render('products',{products,toThousand})
 	},
 
 	// Detail - Detail from one product
@@ -48,7 +48,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		}
 
 		products.push(newProduct);
-		console.log(products);
+		
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 3),'utf-8');
 	
 		return res.redirect('/products')
